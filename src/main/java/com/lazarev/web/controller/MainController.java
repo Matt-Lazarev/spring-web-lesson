@@ -1,21 +1,17 @@
 package com.lazarev.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
 
-    @ResponseBody
+    //MVC -> M - model   V - view (html)  C - controller
     @GetMapping("/hello")  //localhost:8080/hello
-    public String getHelloMessage() {
-        return "Hello!";
-    }
-
-    @ResponseBody
-    @GetMapping("/number")  //localhost:8080/number
-    public String getNumberMessage() {
-        return String.valueOf(100);
+    public String getHelloPage(Model model) {
+        //load from db
+        model.addAttribute("name", "Matvey");
+        return "hello-page"; //html + css
     }
 }

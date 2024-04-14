@@ -8,7 +8,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return null; //SpringConfig, JpaConfig, ...
     }
 
     @Override
@@ -18,6 +18,6 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/" }; // host:port/repositories
+        return new String[] { "/" }; // localhost:8080/hello
     }
 }
