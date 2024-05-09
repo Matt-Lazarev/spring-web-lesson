@@ -3,15 +3,22 @@ package com.lazarev.web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
 
-    //MVC -> M - model   V - view (html)  C - controller
-    @GetMapping("/hello")  //localhost:8080/hello
-    public String getHelloPage(Model model) {
-        //load from db
-        model.addAttribute("name", "Matvey");
-        return "hello-page"; //html + css
+    //MVC - model view controller
+    @GetMapping("/hello")
+    public String getHelloPage(@RequestParam("firstname") String firstname,
+                               @RequestParam(value = "lastname", required = false) String lastname,
+                               Model model) {
+        if(lastname != null){
+            model.addAttribute("name", firstname + " " + lastname);
+        }
+        else {
+            model.addAttribute("name", firstname);
+        }
+        return "hello-page";
     }
 }
